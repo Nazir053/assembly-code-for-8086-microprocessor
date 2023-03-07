@@ -1,0 +1,87 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+mycode1.exe -- emu8086 assembler version: 4.08  
+ 
+[ 3/7/2023  --  12:16:59 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       
+[   4]        :                                       .data
+[   5]    0100: 45 6E 74 65 72 20 61 20 63 68 61 72   msg db 'Enter a character: $'
+                61 63 74 65 72 3A 20 24             
+[   6]    0114: 0A 0D 59 6F 75 20 65 6E 74 65 72 65   output db 10, 13, 'You entered: $'
+                64 3A 20 24                         
+[   7]        :                                       
+[   8]        :                                       .code
+[   9]    0130:                                       main proc
+[  10]    0130: B4 09                                 mov ah, 09h ; Set AH to 09h for printing a string
+[  11]    0132: BA 00 00                              lea dx, msg ; Load the offset address of msg into DX
+[  12]    0135: CD 21                                 int 21h     ; Call the interrupt to print the message
+[  13]        :                                       
+[  14]    0137: B4 01                                 mov ah, 01h ; Set AH to 01h for reading a character
+[  15]    0139: CD 21                                 int 21h     ; Call the interrupt to read a character
+[  16]        :                                       
+[  17]    013B: 8A D0                                 mov dl, al  ; Move the input character to DL for printing
+[  18]    013D: B4 02                                 mov ah, 02h ; Set AH to 02h for printing a character
+[  19]    013F: CD 21                                 int 21h     ; Call the interrupt to print the input character
+[  20]        :                                       
+[  21]    0141: B4 09                                 mov ah, 09h ; Set AH to 09h for printing a string
+[  22]    0143: BA 14 00                              lea dx, output ; Load the offset address of output into DX
+[  23]    0146: CD 21                                 int 21h     ; Call the interrupt to print the output message
+[  24]        :                                       
+[  25]    0148: 8A D0                                 mov dl, al  ; Move the input character to DL for printing
+[  26]    014A: B4 02                                 mov ah, 02h ; Set AH to 02h for printing a character
+[  27]    014C: CD 21                                 int 21h     ; Call the interrupt to print the input character
+[  28]        :                                       
+[  29]    014E: B4 4C                                 mov ah, 4ch ; Set AH to 4Ch for program termination
+[  30]    0150: CD 21                                 int 21h     ; Call the interrupt to terminate the program
+[  31]        :                                       main endp
+[  32]        :                                       end main
+[  33]        :                                       
+[  34]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 52      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 00      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 95      -   check sum (l.byte)
+0013: D5      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 13      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
